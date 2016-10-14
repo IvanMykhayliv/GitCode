@@ -1,0 +1,78 @@
+package com.game.source.main;
+
+import java.awt.Graphics2D;
+
+public abstract class GameObject 
+{
+	protected double x, y, velX, velY;
+	protected int rendX, rendY, width, height;
+	protected boolean bCanUpdate, bCanRender;
+	protected Graphics2D g2d;
+	
+	
+	public GameObject(double xCor, double yCor, int w, int h)
+	{
+		x = (int) xCor;
+		y = (int) yCor;
+		width = w;
+		height = h;
+	}
+	
+	public boolean getCanUpdate() { return bCanUpdate; }
+
+	public boolean getCanRender() {	return bCanRender; }
+	
+	public float getX() { return x; }
+	
+	public float getY() { return y; }
+	
+	public float getVelX() { return velX; }
+	
+	public float getVelY() { return velY; }
+	
+	public int getW() { return width; }
+	
+	public int getH() { return height; }
+	
+	public void enableUpdate()  { bCanUpdate = true; }
+
+	public void disableUpdate() { bCanUpdate = false; }
+
+	public void enableRender() { bCanRender = true; }
+
+	public void disableRender() { bCanRender = false; }
+	
+	public void setX(float xCor) { x = xCor; }
+	
+	public void setY(float yCor) { y = yCor; }
+	
+	public void setPos(float xCor, float yCor) 
+	{
+		x = xCor;
+		y = yCor;
+	}
+	
+	public void setVelX(float veloX) { velX = veloX; }
+	
+	public void setVelY(float veloY) { velY = veloY; }
+	
+	public void setVel(float veloX, float veloY) 
+	{
+		velX = veloX;
+		velY = veloY;
+	}
+
+	public void activate()
+	{
+		bCanUpdate = true;
+		bCanRender = true;
+	}
+	
+	public void deactivate()
+	{
+		velX = 0;
+		velY = 0;
+		bCanRender = false;
+		bCanUpdate = false;
+	}
+}
