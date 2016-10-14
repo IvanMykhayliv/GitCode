@@ -1,0 +1,66 @@
+// PICalculation.cpp : Defines the entry point for the console application.
+
+//Inclusion lines for output/input functions, string usage, and math usage
+#include <iostream>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+//Main program line
+int main()
+{
+	// Calculation of PI based on the Taylor Series, like: PI/4 = 1 - 1/3 + 1/5 - 1/7 + ...
+	// Based off of the formula: PI = 4 [ 1 – 1/3 + 1/5 – 1/7 + 1/9 ... + ((–1)n )/(2n + 1) ]
+
+	int n;				// Input n that determines the number of terms in the approximation of the value of PI
+    double PI = 0.0L;	// For output;
+
+	//Boolean to check if the program is still running
+	bool bStillRun = true;
+
+	//Output line for program introduction
+	cout << "Welcome to the PI Calculation" << endl << endl;
+
+	//While loop that runs so long as the boolean bStillRun is true
+	while (bStillRun)
+	{
+		//Output and input lines asking for user input
+		cout << endl << "Enter the positive number that determines the number of terms in the approximation of the value of PI (Any negative number will end the program): ";
+		cin >> n;
+
+		//Conditional that checks if n is less than zero, bStillRun is false and to continue the program
+		if (n < 0)
+		{
+			bStillRun = false;
+			continue;
+		}
+
+		//Output line showing user input and stating that the calculation has begun
+		cout << endl << "You entered " << n <<  ". The calculation of PI has begun..." << endl;
+
+		//For loop running that declares i and states that so long as it is not less than or equal to user input n, keep iterating
+		for (int i = 0; i <= n; i++)
+		{
+			//Pi equals whatever it is plus the power of negative 1 to the ith power divided by 2 multiplied by the double cast of i plus 1
+			PI += (pow (-1.0L, i))/((2.0L*(double)i) + 1.0L);
+		}
+
+		//Pi equals whatever Pi is times 4
+		PI = PI*4.0L;
+
+		//Output line showing user input and the final Pi calculation
+		cout << endl << "You entered " << n <<  ". So, your calculated PI is = " << PI << endl;
+		
+		//Resets Pi and clears user input
+		PI = 0.0L;
+		cin.clear();
+		cin.ignore(INT_MAX, '\n');
+	}
+
+	//Final output line
+	cout << endl << "You entered " << n <<  ", so the program has now ended." << endl;
+
+	//Program exit line
+	return 0;
+}
