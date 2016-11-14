@@ -2,6 +2,8 @@ package com.game.source.main;
 
 import java.awt.Graphics2D;
 
+//Base class for handling on-screen coordinates and speed of child game objects
+
 public abstract class GameObject 
 {
 	protected double x, y, velX, velY;
